@@ -10,6 +10,8 @@ const First = () => {
     const hashRef = useRef();
     const astRef = useRef();
     const trainersRef = useRef();
+    const descRef = useRef();
+    const sendRef = useRef();
 
     useGSAP(() => {
         const tl = gsap.timeline();
@@ -65,6 +67,18 @@ const First = () => {
             repeat: -1,
             yoyo: true
         });
+
+        gsap.from(descRef.current, {
+            opacity: 0,
+            duration: 1.5,
+            delay : 5
+        })
+        gsap.from(sendRef.current, {
+            opacity: 0,
+            duration: 1.5,
+            delay : 5.3
+        })
+        
     });
 
     const onMouseMoveHandler = (event) => {
@@ -81,7 +95,7 @@ const First = () => {
 
     return (
         <>
-            <div className="text-[5rem] font-semibold flex flex-col justify-center items-center mt-20">
+            <div className="text-[5rem] font-semibold flex flex-col justify-center items-center mt-20 h-full w-full">
                <div className="flex items-center">
                    <span ref={firstRef} className="mr-5">First</span> 
                    <span ref={imageRef} onMouseMove={onMouseMoveHandler} className="h-[7rem] w-[20rem] rounded-[10rem] bg-black overflow-hidden border border-black">
@@ -105,13 +119,13 @@ const First = () => {
                 </div>
 
                {/* Description section */}
-               <div className="text-2xl mt-10 text-center">
+               <div ref={descRef} className="text-2xl mt-10 text-center">
                     Do you want to learn techniques that will make your 
                     <span className="block mx-20">day job or starting a new position easier?</span>
                </div>
 
                {/* Input field with button */}
-               <div className="text-lg font-medium mt-10 relative">
+               <div ref={sendRef} className="text-lg font-medium mt-10 relative">
                     <input 
                         className="px-3 py-4 w-[28rem] border rounded-lg border-black" 
                         type="text" 
